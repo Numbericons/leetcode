@@ -4,12 +4,11 @@
  * @return {boolean[]}
  */
 var kidsWithCandies = function (candies, extraCandies) {
-  let max = 0;
-  for (let z = 0; z < candies.length; z++) { if (candies[z] > max) max = candies[z] }
-  candies.map(candy => candy + extraCandies >= max)
-  return candies;
+  // let max = 0;
+  // for (let z = 0; z < candies.length; z++) { if (candies[z] > max) max = candies[z] }
+  let max = Math.max(...candies)
+  return candies.map(candy => candy + extraCandies >= max)
 };
-
 
 kidsWithCandies([2, 3, 5, 1, 3], 3);
 //iterate through candies array, find the max
