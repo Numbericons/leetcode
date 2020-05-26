@@ -35,10 +35,9 @@ var reverseCourse = function(tarNode) {
 }
 
 var getNode = function(node,directions) {
-  let retNode;
-  directions.forEach(dir => retNode = dir === 'R' ? node.right : node.left )
+  directions.forEach(dir => node = dir === 'R' ? node.right : node.left )
 
-  return retNode;
+  return node;
 }
 
 var getTargetCopy = function (original, cloned, target) {
@@ -88,7 +87,7 @@ clone.right.right.right.right = new TreeNode(3);
 clone.right.right.right.right.right = new TreeNode(2);
 clone.right.right.right.right.right.right = new TreeNode(1);
 
-getTargetCopy(original, clone, original.right)
+getTargetCopy(original, clone, original.right.right.right)
 
 //To return the node within the cloned tree
 //  as you are going through original tree, 
