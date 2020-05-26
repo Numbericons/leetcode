@@ -11,13 +11,13 @@
  * @return {number}
  */
 var enqueue = function (node, queue, level) {
-  if (node.right) {
-    queue.push(node.right);
+  if (node.left) {
+    queue.push(node.left);
     queue[queue.length - 1].parent = node;
     queue[queue.length - 1].level = node.level + 1;
   }
-  if (node.left) {
-    queue.push(node.left);
+  if (node.right) {
+    queue.push(node.right);
     queue[queue.length - 1].parent = node;
     queue[queue.length - 1].level = node.level + 1;
   }

@@ -1,10 +1,10 @@
 var enqueue = function (node, queue)  {
-  if (node.right) {
-    queue.push(node.right);
-    queue[queue.length - 1].parent = node;
-  }
   if (node.left) {
     queue.push(node.left);
+    queue[queue.length - 1].parent = node;
+  }
+  if (node.right) {
+    queue.push(node.right);
     queue[queue.length - 1].parent = node;
   }
 }
