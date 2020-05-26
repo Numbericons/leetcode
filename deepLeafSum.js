@@ -10,14 +10,9 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var enqueue = function (node, queue, level) {
-  if (node.left) {
-    queue.push(node.left);
-    queue[queue.length - 1].parent = node;
-    queue[queue.length - 1].level = node.level + 1;
-  }
-  if (node.right) {
-    queue.push(node.right);
+var enqueue = function (node, queue, dir) {
+  if (node[dir]) {
+    queue.push(node[dir]);
     queue[queue.length - 1].parent = node;
     queue[queue.length - 1].level = node.level + 1;
   }
@@ -33,7 +28,8 @@ var deepestLeavesSum = function (root) {
     if (!node.left && !node.right) {
       sum[node.level] ? sum[node.level] += node.val : sum[node.level] = node.val;
     }
-    enqueue(node, queue, node.level);
+    enqueue(node, queue, 'left');
+    enqueue(node, queue, 'right');
   }
   return sum[Math.max(...Object.keys(sum))];
 };
