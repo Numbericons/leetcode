@@ -1,3 +1,14 @@
+var enqueue = function (node, queue)  {
+  if (node.right) {
+    queue.push(node.right);
+    queue[queue.length - 1].parent = node;
+  }
+  if (node.left) {
+    queue.push(node.left);
+    queue[queue.length - 1].parent = node;
+  }
+}
+
 var sumEvenGrandparent = function (root) {
   let queue = [root];
   let sum = 0;
@@ -8,14 +19,15 @@ var sumEvenGrandparent = function (root) {
     const grandparent = parent ? parent.parent : null;
     if (grandparent && grandparent.val % 2 === 0) sum += node.val;
 
-    if (node.right) {
-      queue.push(node.right);
-      queue[queue.length - 1].parent = node;
-    }
-    if (node.left) {
-      queue.push(node.left);
-      queue[queue.length - 1].parent = node;
-    }
+    enqueue(node, queue);
+    // if (node.right) {
+    //   queue.push(node.right);
+    //   queue[queue.length - 1].parent = node;
+    // }
+    // if (node.left) {
+    //   queue.push(node.left);
+    //   queue[queue.length - 1].parent = node;
+    // }
   }
   return sum;
 };
